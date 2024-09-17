@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/chartmetric-test/static/css/main.40a5d65a.css",
+    "main.js": "/chartmetric-test/static/js/main.543d94a1.js",
+    "static/js/453.0c899f4b.chunk.js": "/chartmetric-test/static/js/453.0c899f4b.chunk.js",
+    "static/media/CM_logo.svg": "/chartmetric-test/static/media/CM_logo.95ff42f7ea45390cbe59402604ae73ef.svg",
+    "index.html": "/chartmetric-test/index.html",
+    "main.40a5d65a.css.map": "/chartmetric-test/static/css/main.40a5d65a.css.map",
+    "main.543d94a1.js.map": "/chartmetric-test/static/js/main.543d94a1.js.map",
+    "453.0c899f4b.chunk.js.map": "/chartmetric-test/static/js/453.0c899f4b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40a5d65a.css",
+    "static/js/main.543d94a1.js"
+  ]
+}
