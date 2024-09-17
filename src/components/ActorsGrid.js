@@ -7,8 +7,8 @@ const ActorsGrid = ({ actors, onActorClick }) => {
     <div className="actor-container">      
       <h3 className="title">Celebrities</h3>
       <div className={gridClass}>
-      {actors.map(actor => (
-        <div className="actor-card" key={actor.id} onClick={() => onActorClick(actor)}>
+      {actors.map((actor, index) => (
+        <div className="actor-card" key={`${actor.id}-${index}`} onClick={() => onActorClick(actor)}>
           <div className="priority-number">{actor.popularity.toFixed(0)}</div>
           <img
             src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}

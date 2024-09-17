@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import ActorsGrid from './components/ActorsGrid';
 import ActorModal from './components/ActorModal';
@@ -11,42 +10,62 @@ const App = () => {
   const [actors, setActors] = useState([]);
   const [page, setPage] = useState(1); // Track the current page
   const [loading, setLoading] = useState(false); // Track loading state
+  const [query, setQuery] = useState(''); // Track the search query
+  const [hasMore, setHasMore] = useState(true); // Track if there are more results
 
   // Infinite scroll logic
   useEffect(() => {
     const handleScroll = () => {
       if (
-        window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight ||
-        loading
+        window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100 &&
+        !loading && hasMore
       ) {
-        return;
+        setPage((prevPage) => prevPage + 1); // Increment page number when bottom is reached
       }
-      setPage((prevPage) => prevPage + 1); // Increment page number when bottom is reached
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [loading]);
+  }, [loading, hasMore]);
 
-  // Load popular actors when the component mounts
+  // Fetch actors based on the query and page
   useEffect(() => {
-    fetchPopularActors().then((response) => setActors(response.data.results));
-  }, []);
+    setLoading(true);
+    
+    const fetchData = async () => {
+      try {
+        let response;
+        if (query) {
+          response = await searchActors(query);
+        } else {
+          response = await fetchPopularActors(page);
+        }
 
-  // Handle search and replace the current actor list with search results
-  const handleSearch = (query) => {
-    if (query) {
-      searchActors(query).then((response) => {
-        console.log('Search results:', response.data.results); // Log the response to debug
-        setActors(response.data.results);
-      }).catch((error) => {
-        console.error('Search API error:', error);
-      });
-      // searchActors(query).then((response) => setActors(response.data.results));
-    } else {
-      // If no query, revert back to the popular actors
-      fetchPopularActors().then((response) => setActors(response.data.results));
-    }
+        // Append the new actors to the existing ones
+        setActors((prevActors) => [...prevActors, ...response.data.results]);
+
+        // If no more results are returned, stop further requests
+        if (response.data.results.length === 0) {
+          setHasMore(false);
+        }
+      } catch (error) {
+        console.error('Error fetching actors:', error);
+        setHasMore(false); // Stop further requests in case of error
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [page, query]);
+
+  // Handle search and reset the state
+  const handleSearch = (searchQuery) => {
+    console.log(searchQuery, page, query)
+    setQuery(searchQuery);
+    setPage(1); // Reset page count
+    setActors([]); // Clear previous actors
+    setHasMore(true); // Reset hasMore flag for new searches
   };
 
   return (
@@ -58,7 +77,7 @@ const App = () => {
         ) : (
           <p>No actors found.</p>
         )}
-        {loading && <p>Loading more actors...</p>} 
+        {loading && <p>Loading more actors...</p>}
       </main>
 
       {selectedActor && (
