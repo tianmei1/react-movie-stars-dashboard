@@ -22,10 +22,13 @@ const Navbar = ({ onSearch }) => {
       handleSearch(); // Allow search to trigger when 'Enter' is pressed
     }
   };
+  const handleLogoClick =()=>{
+    window.location.reload();
+  }
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" onClick={handleLogoClick} />
       </div>
       <div className="navbar-search">
         <i className="fa fa-search"></i>

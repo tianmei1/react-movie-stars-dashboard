@@ -12,6 +12,7 @@ const App = () => {
   const [loading, setLoading] = useState(false); // Track loading state
   const [query, setQuery] = useState(''); // Track the search query
   const [hasMore, setHasMore] = useState(true); // Track if there are more results
+  const [initialLoad, setInitialLoad] = useState(true); // Track initial load to prevent double fetching
 
   // Infinite scroll logic
   useEffect(() => {
@@ -30,13 +31,18 @@ const App = () => {
 
   // Fetch actors based on the query and page
   useEffect(() => {
-    setLoading(true);
-    
+    if (initialLoad) {
+      setInitialLoad(false);
+      return;
+    }
+
     const fetchData = async () => {
+      setLoading(true);
+      
       try {
         let response;
         if (query) {
-          response = await searchActors(query);
+          response = await searchActors(query, page);
         } else {
           response = await fetchPopularActors(page);
         }
@@ -47,6 +53,11 @@ const App = () => {
         // If no more results are returned, stop further requests
         if (response.data.results.length === 0) {
           setHasMore(false);
+        } else {
+          // Check if the content height is smaller than the window height
+          if (document.documentElement.scrollHeight <= window.innerHeight && hasMore && !query) {
+            setPage((prevPage) => prevPage + 1); // Load another page if the content doesn't fill the screen
+          }
         }
       } catch (error) {
         console.error('Error fetching actors:', error);
@@ -57,11 +68,10 @@ const App = () => {
     };
 
     fetchData();
-  }, [page, query]);
+  }, [page, query, initialLoad, hasMore]);
 
   // Handle search and reset the state
   const handleSearch = (searchQuery) => {
-    console.log(searchQuery, page, query)
     setQuery(searchQuery);
     setPage(1); // Reset page count
     setActors([]); // Clear previous actors
