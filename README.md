@@ -6,7 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### 
+```
+npm install
+npm start
+```
 
 ### `live page link`
 https://tianmei1.github.io/chartmetric-test/
