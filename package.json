@@ -1,8 +1,8 @@
 {
-  "name": "chartmetric-test",
+  "name": "react-movie-stars-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tianmei1.github.io/chartmetric-test",
+  "homepage": "https://tianmei1.github.io/react-movie-stars-dashboard",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
