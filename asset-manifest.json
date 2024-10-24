@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/chartmetric-test/static/css/main.40a5d65a.css",
-    "main.js": "/chartmetric-test/static/js/main.6021d55e.js",
-    "static/js/453.0c899f4b.chunk.js": "/chartmetric-test/static/js/453.0c899f4b.chunk.js",
-    "static/media/CM_logo.svg": "/chartmetric-test/static/media/CM_logo.95ff42f7ea45390cbe59402604ae73ef.svg",
-    "index.html": "/chartmetric-test/index.html",
-    "main.40a5d65a.css.map": "/chartmetric-test/static/css/main.40a5d65a.css.map",
-    "main.6021d55e.js.map": "/chartmetric-test/static/js/main.6021d55e.js.map",
-    "453.0c899f4b.chunk.js.map": "/chartmetric-test/static/js/453.0c899f4b.chunk.js.map"
+    "main.css": "/react-movie-stars-dashboard/static/css/main.40a5d65a.css",
+    "main.js": "/react-movie-stars-dashboard/static/js/main.38b46872.js",
+    "static/js/453.16086f2f.chunk.js": "/react-movie-stars-dashboard/static/js/453.16086f2f.chunk.js",
+    "static/media/CM_logo.svg": "/react-movie-stars-dashboard/static/media/CM_logo.95ff42f7ea45390cbe59402604ae73ef.svg",
+    "index.html": "/react-movie-stars-dashboard/index.html",
+    "main.40a5d65a.css.map": "/react-movie-stars-dashboard/static/css/main.40a5d65a.css.map",
+    "main.38b46872.js.map": "/react-movie-stars-dashboard/static/js/main.38b46872.js.map",
+    "453.16086f2f.chunk.js.map": "/react-movie-stars-dashboard/static/js/453.16086f2f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.40a5d65a.css",
-    "static/js/main.6021d55e.js"
+    "static/js/main.38b46872.js"
   ]
 }
