@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This web page is a dashboard which you could browswer and search movie stars by name with infinity scoll 
+
 ## Available Scripts
 
 In the project directory, you can run:
