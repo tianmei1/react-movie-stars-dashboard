@@ -13,7 +13,7 @@ npm start
 ```
 
 ### `live page link`
-https://tianmei1.github.io/chartmetric-test/
+[https://tianmei1.github.io/chartmetric-test/](https://tianmei1.github.io/react-movie-stars-dashboard/)
 
 ### `how to run backend test`
 
